@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk Orang-Orang Tersayang ✨</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #ffffff;
+      --secondary: #e6dada;
+      --dark: #111;
+      --accent: #c9a24d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #0f0f0f, #1c1c1c);
+      color: var(--primary);
+      overflow-x: hidden;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: radial-gradient(circle at top, #2a2a2a, #0f0f0f);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      padding: 0.9rem 2.5rem;
+      border-radius: 30px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--primary);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #000;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+
+    .slider {
+      overflow: hidden;
+      position: relative;
+      margin-top: 3rem;
+    }
+
+    .slide-track {
+      display: flex;
+      width: calc(250px * 10);
+      animation: scroll 40s linear infinite;
+    }
+
+    .slide-track img {
+      width: 250px;
+      height: 320px;
+      object-fit: cover;
+      margin-right: 20px;
+      border-radius: 20px;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===== Cinematic Vertical Gallery ===== */
+    .vertical-wrapper {
+      height: 420px;
+      overflow: hidden;
+      position: relative;
+      margin-top: 3rem;
+      mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    }
+
+    .vertical-track {
+      display: flex;
+      flex-direction: column;
+      animation: scrollY 50s linear infinite;
+    }
+
+    .vertical-track img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 22px;
+      margin-bottom: 24px;
+      animation: zoomFade 12s ease-in-out infinite;
+    }
+
+    @keyframes scrollY {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    @keyframes zoomFade {
+      0% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.06); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.85; }
+    }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Musik -->
+  <audio id="bgMusic" loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Hero -->
+  <header>
+    <div>
+      <h1>Untuk Kamu yang Aku Sayangi</h1>
+      <p>
+        Website kecil ini aku buat untuk rumahku yang hangat🤍
+      </p>
+      <button class="btn" onclick="mulai()">Mulai Perjalanan ✨</button>
+    </div>
+  </header>
+
+  <!-- Ucapan -->
+  <section>
+    <h2>Untuk Mereka yang Aku Sayangi</h2>
+    <div class="cards">
+      <div class="card"><h3>🤍 Semua</h3><p>SELAMAT TAHUN BARUUUU!!!!🤍🤍🤍🤩🥳🥳🥳semoga tahun yang baru ini bisa jadi tahun yang penuh sukacita, damai dan penuh berkat. Makasihh ya mak pak kak adek for everything. makasihh udah banyak ngusahain yang terbaik untuk manusia satu ini terutama di tahun ini. dari awal tahun sampai sekarang banyak gebrakan bahkan sampe buat keributan di rumah. i'm so soryy about thatt. big love gesssss!!!❤️‍🩹❤️‍🩹❤️‍🩹</p></div>
+      <div class="card"><h3>👨 Bapak</h3><p>Terima kasih atas kerja keras, doa, dan cinta yang tak pernah bapak ucapkan, tapi selalu terasa.🤍🤍</p></div>
+      <div class="card"><h3>👩 Mamak</h3><p>Cinta mamak adalah rumah paling hangat yang pernah aku kenal. maaf ya makkk. Tenang mak bisa nya ku solokan semua disinii😁😍</p></div>
+      <div class="card"><h3>🧑 Kakak cinn</h3><p>Terima kasih sudah jadi contoh, and thank u for giving ur best kak'e. sorry for everything for this year aspecially, for all the trouble i've caused</p></div>
+      <div class="card"><h3>🧑 Kak lin</h3><p>Terima kasih atas tawa, nasihat, and yeah sorry for all my fault kaks, Thank you for being willing to put up with me this year,
+for accompanying me and cheering me up so much.
+ .</p></div>
+      <div class="card"><h3>🧒 br pudan</h3><p>Semoga langkahmu selalu ringan dan dunia memperlakukanmu dengan lembut. makin rajin lah belajar, unang holan mangalo dht marbada, lam burju</p></div>
+      <div class="card"><h3>🧒 pudan </h3><p>Tetap jadi cahaya kecil ya pudan...lam burju unang holan na mangalo dohot holan marmeami.</p></div>
+    </div>
+  </section>
+
+  <!-- Galeri -->
+  <section>
+    <h2>BIG LOVE(❁´◡`❁) Tahun 2026 semoga jadi tahun yang penuh sukacita AMINNNN</h2>
+
+    <!-- Horizontal berjalan -->
+    <div class="slider">
+      <div class="slide-track">
+        <img src="foto1.jpg" alt="kenangan">
+        <img src="foto2.jpg" alt="kenangan">
+        <img src="foto3.jpg" alt="kenangan">
+        <img src="foto4.jpg" alt="kenangan">
+        <img src="foto5.jpg" alt="kenangan">
+        <img src="foto6.jpg" alt="kenangan">
+        <img src="foto1.jpg" alt="kenangan">
+        <img src="foto2.jpg" alt="kenangan">
+      </div>
+    </div>
+
+    <!-- Vertical cinematic -->
+    <div class="vertical-wrapper">
+      <div class="vertical-track">
+        <img src="foto7.jpg" alt="kenangan">
+        <img src="foto8.jpg" alt="kenangan">
+        <img src="foto9.jpg" alt="kenangan">
+        <img src="foto10.jpg" alt="kenangan">
+        <img src="foto7.jpg" alt="kenangan">
+        <img src="foto8.jpg" alt="kenangan">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Dibuat dengan tulus 🤍
+  </footer>
+
+  <script>
+    function mulai() {
+      const music = document.getElementById('bgMusic');
+      music.play();
+
+      // confetti awal (halus)
+      confetti({
+        particleCount: 120,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      // confetti SURPRISE acak
+      setInterval(() => {
+        confetti({
+          particleCount: 80,
+          spread: 100,
+          startVelocity: 30,
+          gravity: 0.8,
+          ticks: 200,
+          origin: {
+            x: Math.random(),
+            y: Math.random() * 0.4
+          }
+        });
+      }, 7000);
+
+      window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
